@@ -133,4 +133,4 @@ Do NOT delete your repository from GitHub! Instead, commit frequently as you wor
 
 </details>
 
-**Project created with [@bloomtools/react@0.1.18](https://github.com/bloominstituteoftechnology/npm-tools-react)
+**Project created with [@bloomtools/react@0.1.18](https://github.com/bloominstituteoftechnology/npm-tools-react)**
