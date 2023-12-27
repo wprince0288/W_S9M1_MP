@@ -1,8 +1,8 @@
-# Sprint 9 Module 1 Project
+# Sprint 9 Module 4 Project
 
 ## Introduction
 
-Welcome to Module 1 Project! For this project, you will thoroughly test a login screen using **React Testing Library**.
+Welcome to Module 4 Project! For this project, you will thoroughly test a login screen using **React Testing Library**.
 
 ## Instructions
 
