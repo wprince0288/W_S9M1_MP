@@ -92,9 +92,8 @@ describe('Auth component', () => {
         expect(screen.getByText(`Welcome back, ${usr.username}. We LOVE you!`)).toBeVisible()
         expect(screen.getByText(`ID: ${usr.id}, Username: ${usr.username}, Born: ${usr.born}`)).toBeVisible()
         expect(screen.getByText('Logout')).toBeVisible()
-        expect(screen.getByText('logoutBtn')).toBeVisible()
+        expect(screen.getByTestId('logoutBtn')).toBeVisible()
       })
-      screen.debug()
     })
   }
   test('[7] Logging out a logged-in user displays goodbye message and renders form', async () => {
@@ -104,5 +103,6 @@ describe('Auth component', () => {
     // ✨ assert that the goodbye message is eventually visible in the DOM
     // ✨ assert that the form is visible in the DOM (select it by its test id)
     expect(true).toBe(false) // DELETE
+    screen.debug()
   })
 })
