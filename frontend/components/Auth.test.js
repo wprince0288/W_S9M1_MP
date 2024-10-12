@@ -70,20 +70,31 @@ describe('Auth component', () => {
   })
   test('[5] Submitting incorrect credentials shows "Invalid Credentials" message', async () => {
     // ✨ type whatever username and password and submit form
+    await user.type(userInput, 'gabe')
+    await user.type(passInput, '1234')
+    await user.click(loginBtn)
     // ✨ assert that the "Invalid Credentials" message eventually is visible
-    expect(true).toBe(false) // DELETE
-    screen.debug()
+    expect(await screen.findByText('Invalid Credentials')).toBeVisible()
   })
   for (const usr of registeredUsers) {
     test(`[6.${usr.id}] Logging in ${usr.username} makes the following elements render:
-        - correct welcome message
-        - correct user info (ID, username, birth date)
-        - logout button`, async () => {
+      - correct welcome message
+      - correct user info (ID, username, birth date)
+      - logout button`, async () => {
       // ✨ type valid credentials and submit form
-      // ✨ assert that the correct welcome message is eventually visible
-      // ✨ assert that the correct user info appears is eventually visible
-      // ✨ assert that the logout button appears
-      expect(true).toBe(false) // DELETE
+      await user.type(userInput, usr.username)
+      await user.type(passInput, usr.password)
+      await user.click(loginBtn)
+      await waitFor(() => {
+        // ✨ assert that the correct welcome message is eventually visible
+        // ✨ assert that the correct user info appears is eventually visible
+        // ✨ assert that the logout button appears
+        expect(screen.getByText(`Welcome back, ${usr.username}. We LOVE you!`)).toBeVisible()
+        expect(screen.getByText(`ID: ${usr.id}, Username: ${usr.username}, Born: ${usr.born}`)).toBeVisible()
+        expect(screen.getByText('Logout')).toBeVisible()
+        expect(screen.getByText('logoutBtn')).toBeVisible()
+      })
+      screen.debug()
     })
   }
   test('[7] Logging out a logged-in user displays goodbye message and renders form', async () => {
