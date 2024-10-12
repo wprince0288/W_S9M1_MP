@@ -35,20 +35,23 @@ describe('Auth component', () => {
 
   // 👇 START WORKING HERE
   test('[1] Inputs acquire the correct values when typed on', async () => {
-    screen.debug()
     // ✨ type some text in the username input (done for you)
     await user.type(userInput, 'gabe')
     // ✨ assert that the input has the value entered (done for you)
     expect(userInput).toHaveValue('gabe')
     // ✨ type some text in the password input
+    await user.type(passInput, '1234')
     // ✨ assert that the input has the value entered
-    expect(true).toBe(false) // DELETE
+    expect(passInput).toHaveValue('1234')
   })
   test('[2] Submitting form clicking button shows "Please wait..." message', async () => {
     // ✨ type whatever values on username and password inputs
+    await user.type(userInput, 'gabe')
+    await user.type(passInput, '1234')
     // ✨ click the Login button
+    await user.click(loginBtn)
     // ✨ assert that the "Please wait..." message is visible in the DOM
-    expect(true).toBe(false) // DELETE
+      screen.debug()
   })
   test('[3] Submitting form typing [ENTER] shows "Please wait..." message', async () => {
     // ✨ type whatever values in username and password inputs
