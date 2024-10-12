@@ -51,23 +51,28 @@ describe('Auth component', () => {
     // ✨ click the Login button
     await user.click(loginBtn)
     // ✨ assert that the "Please wait..." message is visible in the DOM
-      screen.debug()
+    expect(screen.getByText('Please wait...')).toBeVisible()
   })
   test('[3] Submitting form typing [ENTER] shows "Please wait..." message', async () => {
     // ✨ type whatever values in username and password inputs
+    await user.type(userInput, 'gabe')
+    await user.type(passInput, '1234')
     // ✨ hit the [ENTER] key on the keyboard
+    await user.keyboard('[ENTER]')
     // ✨ assert that the "Please wait..." message is visible in the DOM
-    expect(true).toBe(false) // DELETE
+    expect(screen.getByText('Please wait...')).toBeVisible()
   })
   test('[4] Submitting an empty form shows "Invalid Credentials" message', async () => {
     // ✨ submit an empty form
+    await user.click(loginBtn)
     // ✨ assert that the "Invalid Credentials" message eventually is visible
-    expect(true).toBe(false) // DELETE
+    expect(await screen.findByText('Invalid Credentials')).toBeVisible()
   })
   test('[5] Submitting incorrect credentials shows "Invalid Credentials" message', async () => {
     // ✨ type whatever username and password and submit form
     // ✨ assert that the "Invalid Credentials" message eventually is visible
     expect(true).toBe(false) // DELETE
+    screen.debug()
   })
   for (const usr of registeredUsers) {
     test(`[6.${usr.id}] Logging in ${usr.username} makes the following elements render:
